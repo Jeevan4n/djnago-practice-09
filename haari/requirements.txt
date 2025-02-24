@@ -3,3 +3,4 @@ djangorestframework
 django-tailwind
 #'django-tailwind[reload]'
 mysqlclient
+gunicorn
