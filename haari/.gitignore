@@ -1,0 +1,36 @@
+venv
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+*.env
+
+# Django-specific
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media / Static files
+media/
+staticfiles/
+static/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Deployment
+*.bak
+*.swp
+*.swo
+
+# Migrations (optional, if you want to exclude compiled migrations)
+**/migrations/*.pyc
+**/migrations/*.pyo

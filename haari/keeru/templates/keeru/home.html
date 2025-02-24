@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Keeru App</title>
+    <link rel="stylesheet" href="{% static 'keeru/styles.css' %}" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}" class="active">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home">
+        <h1>Welcome to the Keeru App Home Page</h1>
+        <p>This is the home section of our Keeru app website.</p>
+
+        <!-- Display Products -->
+        <h2>Our Products</h2>
+        <ul>
+          {% for product in products %}
+          <li>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p><strong>Price:</strong> ${{ product.price }}</p>
+            <p>
+              <small>Added on: {{ product.created_at|date:"F j, Y" }}</small>
+            </p>
+
+            <!-- Delete Button Form -->
+            <form
+              method="post"
+              action="{% url 'delete_product' product.id %}"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button type="submit">Delete</button>
+            </form>
+          </li>
+          {% empty %}
+          <p>No products available.</p>
+          {% endfor %}
+        </ul>
+
+        <!-- Add a New Product Form -->
+        <h2>Add a New Product</h2>
+        <form method="post">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit">Add Product</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Keeru App. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Keeru App</title>
+    <link rel="stylesheet" href="{% static 'keeru/styles.css' %}" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="contact">
+        <h1>Contact Keeru App</h1>
+        <p>Get in touch with us through the following channels:</p>
+        <ul>
+          <li>Email: info@keeruapp.com</li>
+          <li>Phone: +1 234 567 890</li>
+          <li>Address: 123 Main Street, Anytown, USA</li>
+        </ul>
+        <form action="/submit-contact/" method="POST">
+          <label for="name">Name:</label><br />
+          <input type="text" id="name" name="name" required /><br />
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required /><br />
+          <label for="message">Message:</label><br />
+          <textarea id="message" name="message" rows="5" required></textarea
+          ><br />
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Keeru App. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
